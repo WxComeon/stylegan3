@@ -7,6 +7,9 @@
 # license agreement from NVIDIA CORPORATION is strictly prohibited.
 
 """Converting legacy network pickle into the new format."""
+import sys
+
+sys.path.append("/home/wg2361/xai-face-model/stylegan3")
 
 import click
 import pickle
