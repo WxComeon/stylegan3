@@ -7,9 +7,10 @@
 # license agreement from NVIDIA CORPORATION is strictly prohibited.
 
 """Converting legacy network pickle into the new format."""
-import sys
+import os, sys
 
-sys.path.append("/home/wg2361/xai-face-model/stylegan3")
+current_file_directory = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_file_directory)
 
 import click
 import pickle
