@@ -6,17 +6,17 @@ sys.path.append(current_file_directory)
 import legacy
 from training.networks_stylegan3_editing import Generator
 
-def load_stylegan(img_resolution, new_model=True, cfg = 'stylegan3-r', unaligned=False):
+def load_stylegan(img_resolution, new_model=True, cfg = 'stylegan3-r', aligned=False):
     model_root_dir = f'/engram/nklab/face_proj/models/{cfg}'
     assert os.path.exists(model_root_dir), f'No model directory found at {model_root_dir}'
-    if img_resolution == 128 and unaligned is False:
+    if img_resolution == 128 and aligned:
         network_pkl = "ffhq_128/00000-stylegan3-r-ffhq_128-gpus8-batch32-gamma0.5/network-snapshot-025000.pkl"
     elif img_resolution == 256:
         network_pkl = "stylegan3-r-ffhqu-256x256.pkl"
-    elif img_resolution == 1024 and unaligned is False:
+    elif img_resolution == 1024 and aligned:
         network_pkl = "stylegan3-r-ffhq-1024x1024.pkl"
     else:
-        raise NotImplementedError(f'No model found for resolution {img_resolution} trained on unaligned={unaligned} dataset')
+        raise NotImplementedError(f'No model found for resolution {img_resolution} trained on aligned={aligned} dataset')
     
     network_pkl = os.path.join(model_root_dir, network_pkl)
     with open(network_pkl, 'rb') as f:
